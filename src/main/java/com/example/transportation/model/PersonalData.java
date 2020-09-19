@@ -19,17 +19,17 @@ public class PersonalData {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(name = "NAME")
-    public String name;
+    private String name;
 
     @Column(name = "SURNAME")
-    public String surname;
+    private String surname;
 
     @Column(name = "PHONE_NUMBER")
-    public String phoneNumber;
+    private String phoneNumber;
 
     @OneToOne(mappedBy = "personalData")
-    public UserCredentials userCredentials;
+    private UserCredentials userCredentials;
 }

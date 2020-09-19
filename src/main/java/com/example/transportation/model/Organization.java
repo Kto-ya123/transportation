@@ -21,22 +21,22 @@ public class Organization {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column
-    public String name;
+    private String name;
 
     @OneToMany(
             fetch = FetchType.EAGER,
             mappedBy = "organization",
             cascade = CascadeType.REMOVE)
-    public Set<Car> carPark;
+    private Set<Car> carPark;
 
     @OneToMany(
             fetch = FetchType.EAGER,
             mappedBy = "organization",
             cascade = CascadeType.REMOVE)
-    public Set<Trip> trips;
+    private Set<Trip> trips;
 
     @OneToOne
     @JoinColumn(name = "ADMINISTRATOR_ID")

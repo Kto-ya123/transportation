@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Data
 @Builder
@@ -22,27 +23,33 @@ public class Trip {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(name = "DEPARTURE_TIME")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    public Date departureTime;
+    private Date departureTime;
 
     @Column(name = "ARRIVAL_TIME")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    public Date arrivalTime;
+    private Date arrivalTime;
 
     @Column(name = "DEPARTURE_CITY")
-    public String departureCity;
+    private String departureCity;
 
     @Column(name = "ARRIVAL_CITY")
-    public String arrivalCity;
+    private String arrivalCity;
+
+    @Column(name = "COST")
+    private Integer cost;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<UserCredentials> passengers;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "ORGANIZATION_ID")
-    public Organization organization;
+    private Organization organization;
 
     @ManyToOne
     @JoinColumn(name = "DRIVER_ID")
-    public UserCredentials driver;
+    private UserCredentials driver;
 }
