@@ -1,23 +1,33 @@
 package com.example.transportation.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+
+@Entity
+@Table(name = "PERSONAL_DATA")
 public class PersonalData {
+
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     public String name;
 
-    @Column(name = "surname")
+    @Column(name = "SURNAME")
     public String surname;
 
-    @Column(name = "phone_number")
+    @Column(name = "PHONE_NUMBER")
     public String phoneNumber;
 
     @OneToOne(mappedBy = "personalData")

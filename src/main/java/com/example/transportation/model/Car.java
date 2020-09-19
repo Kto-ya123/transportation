@@ -1,16 +1,27 @@
 package com.example.transportation.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+
+@Entity
+@Table(name="CAR")
 public class Car {
+
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column(name = "vehicleNumber")
+    @Column(name = "VEHICLE_NUMBER")
     public String vehicleNumber;
 
     @Column
@@ -19,17 +30,7 @@ public class Car {
     @Column
     public Integer capacity;
 
-    @ManyToOne
-    @JoinColumn(name = "organisation_id")
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "ORGANIZATION_ID")
     public Organization organization;
-
-    @OneToOne
-    @JoinColumn(name = "car_id")
-    public Car car;
-
-    @OneToOne
-    @JoinColumn(name = "driver")
-    public UserCredentials driver;
-
-
 }
