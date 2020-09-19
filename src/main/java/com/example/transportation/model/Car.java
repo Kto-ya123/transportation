@@ -19,18 +19,18 @@ public class Car {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(name = "VEHICLE_NUMBER")
-    public String vehicleNumber;
+    private String vehicleNumber;
 
     @Column
-    public String model;
+    private String model;
 
     @Column
-    public Integer capacity;
+    private Integer capacity;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "ORGANIZATION_ID")
-    public Organization organization;
+    private Organization organization;
 }

@@ -20,22 +20,22 @@ public class UserCredentials {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column
-    public String login;
+    private String login;
 
     @Column
-    public String password;
+    private String password;
 
     @Column
-    public String email;
+    private String email;
 
     @Column(name = "ROLE")
     @Enumerated(value = EnumType.STRING)
-    public Role role;
+    private Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="PERSONAL_DATA_ID", referencedColumnName = "ID")
-    public PersonalData personalData;
+    private PersonalData personalData;
 }
