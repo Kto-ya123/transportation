@@ -52,4 +52,8 @@ public class Trip {
     @ManyToOne
     @JoinColumn(name = "DRIVER_ID")
     private UserCredentials driver;
+
+    @ManyToOne
+    @JoinColumn(name = "CAR_ID")
+    private Car car;
 }
