@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Builder
@@ -33,4 +34,7 @@ public class Car {
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "ORGANIZATION_ID")
     private Organization organization;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    private Set<Trip> trips;
 }
