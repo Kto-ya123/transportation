@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    image: mysql/mysql-server:latest
+    restart: unless-stopped
+    networks:
+      - transportation
+    env_file:
+      - db.env
+
+  application:
+    container_name: application
+    build: .
+    env_file:
+      - app.env
+    depends_on:
+      - db
+    restart: on-failure
+    networks:
+      - transportation
+    ports:
+      - 8080:8080
+
+networks:
+  transportation:
+    driver: bridge
